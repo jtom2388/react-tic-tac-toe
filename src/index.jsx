@@ -15,14 +15,18 @@ function Game() {
 
   let [ squares, setSquares ] = useState(Array(9).fill(null));
   let [ isPlayerX, setIsPlayerX ] = useState(true);
+  let nextTurn = isPlayerX ? 'X' : 'O'
   let winner = win(squares);
 
   function renderSquare(n) {
     return <Square 
       value={squares[n]} 
       onClick={() => {
+        if(squares[n] !== null || winner !== null) {
+          return;
+        }
         let markSquares = squares.slice();
-        markSquares[n] = isPlayerX ? 'X' : 'O';
+        markSquares[n] = nextTurn;
         setSquares(markSquares);
         setIsPlayerX(!isPlayerX)
       }} 
@@ -35,7 +39,7 @@ function Game() {
     } else if (isBoardFull(squares)) {
       return "Tie game";
     } else {
-      return (isPlayerX ? 'X' : 'O') + "'s turn";
+      return (nextTurn) + "'s turn";
     }
   }
 
