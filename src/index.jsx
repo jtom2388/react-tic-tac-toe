@@ -14,14 +14,16 @@ function Square({ value, onClick }) {
 function Game() {
 
   let [ squares, setSquares ] = useState(Array(9).fill(null));
+  let [ isPlayerX, setIsPlayerX ] = useState(true);
 
   function renderSquare(n) {
     return <Square 
       value={squares[n]} 
       onClick={() => {
         let markSquares = squares.slice();
-        markSquares[n] = 'X';
+        markSquares[n] = isPlayerX ? 'X' : 'O';
         setSquares(markSquares);
+        setIsPlayerX(!isPlayerX)
       }} 
     />;
   }
