@@ -11,6 +11,14 @@ function Square({ value, onClick }) {
   );
 }
 
+function Restart({ onClick }) {
+  return(
+    <button className='restart' onClick={onClick}>
+      Restart Game
+    </button>
+  );
+}
+
 function Game() {
 
   let [ squares, setSquares ] = useState(Array(9).fill(null));
@@ -31,6 +39,17 @@ function Game() {
         setIsPlayerX(!isPlayerX)
       }} 
     />;
+  }
+
+  function restartGame() {
+    return(
+      <Restart 
+        onClick={() => {
+          setSquares(Array(9).fill(null));
+          setIsPlayerX(true);
+        }}
+      />
+    );
   }
 
   function gameStatus() {
@@ -64,6 +83,7 @@ function Game() {
           </div>
         </div>
         <div className='game-info'>{gameStatus()}</div>
+        <div className='restart-button'>{restartGame()}</div>
       </div>
     </div>
   )
