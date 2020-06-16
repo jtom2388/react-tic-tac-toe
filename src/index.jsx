@@ -13,24 +13,28 @@ function Square({ value, onClick }) {
 
 function Game() {
 
+  function renderSquare(n) {
+    return <Square value={n} onClick={null} />;
+  }
+
   return (
     <div className='container'>
       <div className='game'>
         <div className='board'>
           <div className='row'>
-            <Square value={0} onClick={null}/>
-            <Square value={1} onClick={null}/>
-            <Square value={2} onClick={null}/>
+            {renderSquare(0)}
+            {renderSquare(1)}
+            {renderSquare(2)}
           </div>
           <div className='row'>
-            <Square value={3} onClick={null}/>
-            <Square value={4} onClick={null}/>
-            <Square value={5} onClick={null}/>
+            {renderSquare(3)}
+            {renderSquare(4)}
+            {renderSquare(5)}
           </div>
           <div className='row'>
-            <Square value={6} onClick={null}/>
-            <Square value={7} onClick={null}/>
-            <Square value={8} onClick={null}/>
+            {renderSquare(6)}
+            {renderSquare(7)}
+            {renderSquare(8)}
           </div>
         </div>
       </div>
