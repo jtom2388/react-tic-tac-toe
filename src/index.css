@@ -9,7 +9,7 @@ ol, ul {
     padding-left: 30px;
 }
 
-.board-row:after {
+.row:after {
     clear: both;
     content: "";
     display: table;

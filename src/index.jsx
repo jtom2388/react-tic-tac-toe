@@ -13,8 +13,17 @@ function Square({ value, onClick }) {
 
 function Game() {
 
+  let [ squares, setSquares ] = useState(Array(9).fill(null));
+
   function renderSquare(n) {
-    return <Square value={n} onClick={null} />;
+    return <Square 
+      value={squares[n]} 
+      onClick={() => {
+        let markSquares = squares.slice();
+        markSquares[n] = 'X';
+        setSquares(markSquares);
+      }} 
+    />;
   }
 
   return (
